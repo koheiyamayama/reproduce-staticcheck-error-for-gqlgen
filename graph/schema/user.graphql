@@ -1,0 +1,18 @@
+extend type Query {
+  users: [User!]!
+}
+
+type User {
+  id: ID!
+  name: String!
+  posts: [Post!]! @goField(forceResolver: true)
+}
+
+type PostConnection implements Connection {
+  edge: PostEdge!
+}
+
+type PostEdge implements Edge {
+  cursor: String!
+  node: Post!
+}

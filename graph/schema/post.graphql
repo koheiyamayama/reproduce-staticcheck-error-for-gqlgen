@@ -1,0 +1,26 @@
+interface Post implements Node {
+  id: ID!
+  title: String!
+  body: String!
+}
+
+type TweetPost implements Post & Node {
+  id: ID!
+  title: String!
+  body: String!
+  tweetId: ID!
+}
+
+type FacebookPost implements Post & Node {
+  id: ID!
+  title: String!
+  body: String!
+  facebookId: ID!
+}
+
+type InstagramPost implements Post & Node{
+  id: ID!
+  title: String!
+  body: String!
+  instagramId: ID!
+}
