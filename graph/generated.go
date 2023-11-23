@@ -3250,11 +3250,6 @@ func (ec *executionContext) _Node(ctx context.Context, sel ast.SelectionSet, obj
 	switch obj := (obj).(type) {
 	case nil:
 		return graphql.Null
-	case model.Post:
-		if obj == nil {
-			return graphql.Null
-		}
-		return ec._Post(ctx, sel, obj)
 	case model.TweetPost:
 		return ec._TweetPost(ctx, sel, &obj)
 	case *model.TweetPost:
@@ -3276,6 +3271,11 @@ func (ec *executionContext) _Node(ctx context.Context, sel ast.SelectionSet, obj
 			return graphql.Null
 		}
 		return ec._InstagramPost(ctx, sel, obj)
+	case model.Post:
+		if obj == nil {
+			return graphql.Null
+		}
+		return ec._Post(ctx, sel, obj)
 	default:
 		panic(fmt.Errorf("unexpected type %T", obj))
 	}
